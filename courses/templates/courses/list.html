@@ -1,0 +1,23 @@
+{% extends "layout.htm" %}
+
+{% block title %}
+    courses Page
+{% endblock  %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-3">
+            {% include "courses/partials/_category.html" %}
+        </div>
+
+        <div class="col-9">
+            {% if courses|length == 0 %}
+                <div class="alert alert-warning">This Course is not found</div>
+            {% endif %}
+
+            {% include 'courses/partials/_courses.html' %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ASELSAN | {% block title %}{% endblock  %} </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="{% static "courses/css/style.css" %} ">
+</head>
+<body>
+    {% include 'partials/_nav.htm' %}
+
+    {% block content %}{% endblock %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

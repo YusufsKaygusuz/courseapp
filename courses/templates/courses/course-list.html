@@ -1,0 +1,44 @@
+{% extends "layout.htm" %}
+{% load static %}
+
+{% block title %}
+    courses List
+{% endblock  %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-sm table-bordered" >
+           <thead style="text-align: center;">
+            <tr>
+                <th style="width: 120px;">Images</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Description</th>
+                <th style="width: 80px; "></th>
+            </tr>
+           </thead>
+           <tbody style="text-align: center;">
+                {% for course in courses %}
+                    <tr>
+                        <td>
+                            <img src="{% static 'courses/img/'|add:course.imageUrl %}" alt="" class="img-fluid">
+                        </td>
+                        <td> {{course.title}} </td>
+                        <td> {{course.slug}} </td>
+                        <td> {{course.subtitle}} </td>
+                        <td>
+                            <a href=" {% url "course_edit" course.id %}" class="btn btn-warning btn-sm">Update</a>
+
+                            <a href=" {% url "course_delete" course.id %}" class="btn btn-danger btn-sm mt-1">Delete</a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+           </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

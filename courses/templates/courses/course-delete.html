@@ -1,0 +1,25 @@
+{% extends "layout.htm" %}
+{% load static %}
+
+{% block title %}
+    courses List
+{% endblock  %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <p>
+                <strong> {{ course.title }} </strong> is named do you want to delete it?
+            </p>
+
+            <form action="{% url 'course_delete' course.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes</button>
+                <a href="{% url 'course_list' %}" class="btn btn-primary">No</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

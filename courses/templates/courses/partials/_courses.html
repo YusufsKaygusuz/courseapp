@@ -1,0 +1,35 @@
+{% load static %}
+{% for kurs in courses %}
+
+{% if kurs.isActive %}
+<div class="card mb-3">
+    <div class="row">
+        <div class="col-4">
+            <img class="img-fluid rounded-start" src="{% static 'courses/img/'|add:kurs.imageUrl %}" alt="{{ kurs.title }}">
+        </div>
+        <div class="col-8">
+            <div class="card-body">
+                <h5 class="card-title"> 
+                    <a style="text-decoration: none;"  href=" {% url "courseDetail" kurs.slug %} ">
+                        {{ kurs.title }}
+                    </a>
+                 </h5>
+                <p class="card-text"> {{ kurs.subtitle|truncatechars:20 }} </p>
+                <p> {{ kurs.date|date:'SHORT_DATE_FORMAT' }} </p>
+                
+                {% comment %} <span>
+                    {% if kurs.isUpdated %}
+                    <span class="badge bg-success">Updated</span>
+                    {% else %}
+                    <span class="badge bg-warning">Waiting Update</span>
+                    
+                    {% endif %}
+
+                </span> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endfor %}
